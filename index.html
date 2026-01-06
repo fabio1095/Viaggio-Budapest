@@ -17,13 +17,13 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         
-        /* CSS per rendere le immagini visibili sempre */
+        /* Immagini sempre visibili */
         img { display: block; width: 100%; height: 100%; object-fit: cover; }
         
         /* Stile Popup Mappa */
         .gm-style-iw { padding: 0 !important; border-radius: 12px !important; overflow: hidden !important; }
         .gm-style-iw-d { overflow: hidden !important; max-height: none !important; }
-        .gm-ui-hover-effect { background: white !important; border-radius: 50% !important; margin: 5px !important; }
+        .gm-ui-hover-effect { background: white !important; border-radius: 50% !important; margin: 5px !important; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
     </style>
 </head>
 <body class="text-slate-900 antialiased">
@@ -95,67 +95,16 @@
             <section class="space-y-12" id="day-1">
                 <div class="grid lg:grid-cols-12 gap-12">
                     <div class="lg:col-span-8 relative timeline-line">
-                        
-                        <div class="relative z-10 pl-16 mb-10">
-                            <h4 class="text-2xl font-bold">10:00 - 12:30 | Parlamento</h4>
-                            <p class="text-slate-500">Passeggiata lungo il Danubio e monumento Scarpe.</p>
-                            <span class="text-xs font-bold text-slate-400 uppercase tracking-widest mt-2 block">
-                                <span class="material-symbols-outlined align-middle text-sm">directions_walk</span> 15-20 min a piedi dal Condo
-                            </span>
-                        </div>
-
-                        <div class="relative z-10 pl-16 mb-10">
-                            <h4 class="text-2xl font-bold">13:00 - 14:15 | Mazel Tov</h4>
-                            <p class="text-slate-500 mb-2">Pranzo nel quartiere ebraico.</p>
-                            <a href="https://mazeltov.hu/en/" target="_blank" class="text-rose-500 font-bold underline text-sm hover:text-rose-700">Prenota Tavolo ↗</a>
-                        </div>
-
-                        <div class="relative z-10 pl-16 mb-10">
-                            <h4 class="text-2xl font-bold">14:30 - 16:00 | Cat Museum</h4>
-                            <p class="text-slate-500 mb-2">Caffè con i gatti.</p>
-                            <a href="https://catmuseumbudapest.eu/" target="_blank" class="text-rose-500 font-bold underline text-sm hover:text-rose-700 mr-4">Sito Ufficiale ↗</a>
-                            <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">
-                                <span class="material-symbols-outlined align-middle text-sm">subway</span> Metro M3: Arany János (8 min)
-                            </span>
-                        </div>
-
-                        <div class="relative z-10 pl-16 mb-10">
-                            <h4 class="text-2xl font-bold">16:30 - 19:00 | Terme Széchenyi</h4>
-                            <p class="text-slate-500 mb-2">Relax al tramonto.</p>
-                            <a href="https://www.szechenyibath.hu/" target="_blank" class="text-rose-500 font-bold underline text-sm hover:text-rose-700 mr-4">Ticket Salta-Coda ↗</a>
-                            <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">
-                                <span class="material-symbols-outlined align-middle text-sm">train</span> Metro Gialla M1 (15 min)
-                            </span>
-                        </div>
-
-                        <div class="relative z-10 pl-16 mb-10">
-                            <h4 class="text-xl font-bold text-rose-800">19:15 - 20:30 | Rientro & Doccia</h4>
-                            <p class="text-slate-500 text-sm">Relax prima della serata.</p>
-                            <span class="text-xs font-bold text-rose-400 uppercase tracking-widest mt-1 block">Bolt Taxi (10 min)</span>
-                        </div>
-
-                        <div class="relative z-10 pl-16 mb-10">
-                            <h4 class="text-2xl font-bold">21:00 - 22:30 | Crociera</h4>
-                            <p class="text-slate-500 mb-2">Tour notturno sul Danubio con Prosecco.</p>
-                            <a href="https://budapestrivercruise.com/" target="_blank" class="text-rose-500 font-bold underline text-sm hover:text-rose-700">Prenota Crociera ↗</a>
-                        </div>
-
-                        <div class="relative z-10 pl-16 mb-10">
-                            <h4 class="text-2xl font-bold">22:30 - Late | Szimpla Kert</h4>
-                            <p class="text-slate-500">Ruin Pub iconico.</p>
-                            <span class="text-xs font-bold text-slate-400 uppercase tracking-widest mt-2 block">8 min a piedi per casa</span>
-                        </div>
+                        <div class="relative z-10 pl-16 mb-10"><h4 class="text-2xl font-bold">10:00 - 12:30 | Parlamento</h4><p class="text-slate-500">Passeggiata lungo il Danubio.</p></div>
+                        <div class="relative z-10 pl-16 mb-10"><h4 class="text-2xl font-bold">13:00 - 14:15 | Mazel Tov</h4><p class="text-slate-500">Pranzo quartiere ebraico. <a href="https://mazeltov.hu/en/" target="_blank" class="text-rose-500 underline">Prenota</a></p></div>
+                        <div class="relative z-10 pl-16 mb-10"><h4 class="text-2xl font-bold">14:30 - 16:00 | Cat Museum</h4><p class="text-slate-500">Caffè con gatti. <a href="https://catmuseumbudapest.eu/" target="_blank" class="text-rose-500 underline">Info</a></p></div>
+                        <div class="relative z-10 pl-16 mb-10"><h4 class="text-2xl font-bold">16:30 - 19:00 | Terme Széchenyi</h4><p class="text-slate-500">Relax tramonto. <a href="https://www.szechenyibath.hu/" target="_blank" class="text-rose-500 underline">Ticket</a></p></div>
+                        <div class="relative z-10 pl-16 mb-10"><h4 class="text-2xl font-bold">21:00 - 22:30 | Crociera</h4><p class="text-slate-500">Tour notturno. <a href="https://budapestrivercruise.com/" target="_blank" class="text-rose-500 underline">Prenota</a></p></div>
+                        <div class="relative z-10 pl-16 mb-10"><h4 class="text-2xl font-bold">22:30 - Late | Szimpla Kert</h4><p class="text-slate-500">Ruin Pub iconico.</p></div>
                     </div>
-                    
                     <div class="lg:col-span-4 space-y-6">
-                        <div class="rounded-3xl overflow-hidden shadow-lg h-64 bg-slate-200">
-                            <img src="gatti.jpg" onerror="this.src='https://placehold.co/600x400?text=Carica+gatti.jpg'" 
-                                 class="w-full h-full object-cover">
-                        </div>
-                        <div class="rounded-3xl overflow-hidden shadow-lg h-64 bg-slate-200">
-                            <img src="terme.jpg" onerror="this.src='https://placehold.co/600x400?text=Carica+terme.jpg'" 
-                                 class="w-full h-full object-cover">
-                        </div>
+                        <div class="rounded-3xl overflow-hidden shadow-lg h-64 bg-slate-200"><img src="gatti.jpg" class="w-full h-full object-cover"></div>
+                        <div class="rounded-3xl overflow-hidden shadow-lg h-64 bg-slate-200"><img src="terme.jpg" class="w-full h-full object-cover"></div>
                     </div>
                 </div>
             </section>
@@ -163,44 +112,14 @@
             <section class="hidden space-y-12" id="day-2">
                 <div class="grid lg:grid-cols-12 gap-12">
                     <div class="lg:col-span-8 relative timeline-line">
-                        
-                        <div class="relative z-10 pl-16 mb-10">
-                            <h4 class="text-2xl font-bold">10:00 - 13:00 | Buda Castle</h4>
-                            <p class="text-slate-500">Vista sulla città e Bastione dei Pescatori.</p>
-                            <span class="text-xs font-bold text-slate-400 uppercase tracking-widest mt-2 block">
-                                <span class="material-symbols-outlined align-middle text-sm">directions_bus</span> Bus 16 da Deák tér (15 min)
-                            </span>
-                        </div>
-
-                        <div class="relative z-10 pl-16 mb-10">
-                            <h4 class="text-2xl font-bold">14:30 - 16:00 | Ospedale Roccia</h4>
-                            <p class="text-slate-500 mb-2">Tour storico nel bunker.</p>
-                            <a href="https://www.sziklakorhaz.eu/en" target="_blank" class="text-rose-500 font-bold underline text-sm hover:text-rose-700">Prenota Bunker ↗</a>
-                        </div>
-
-                        <div class="relative z-10 pl-16 mb-10">
-                            <h4 class="text-2xl font-bold">17:00 - 18:30 | Cittadella</h4>
-                            <p class="text-slate-500">Tramonto panoramico.</p>
-                            <span class="text-xs font-bold text-slate-400 uppercase tracking-widest mt-2 block">Bolt Taxi o camminata (20 min)</span>
-                        </div>
-
-                        <div class="relative z-10 pl-16 mb-10">
-                            <h4 class="text-2xl font-bold">20:00 - 22:00 | Cena Menza</h4>
-                            <p class="text-slate-500 mb-2">Cucina tipica ungherese.</p>
-                            <a href="https://www.menza.hu/en/" target="_blank" class="text-rose-500 font-bold underline text-sm hover:text-rose-700">Sito Menza ↗</a>
-                        </div>
-
-                        <div class="relative z-10 pl-16 mb-10">
-                            <h4 class="text-2xl font-bold">22:30 - Late | Instant-Fogas</h4>
-                            <p class="text-slate-500">Il club più grande di Budapest.</p>
-                            <span class="text-xs font-bold text-slate-400 uppercase tracking-widest mt-2 block">6 min a piedi da casa</span>
-                        </div>
+                        <div class="relative z-10 pl-16 mb-10"><h4 class="text-2xl font-bold">10:00 - 13:00 | Buda Castle</h4><p class="text-slate-500">Vista panoramica.</p></div>
+                        <div class="relative z-10 pl-16 mb-10"><h4 class="text-2xl font-bold">14:30 - 16:00 | Ospedale Roccia</h4><p class="text-slate-500">Bunker. <a href="https://www.sziklakorhaz.eu/en" target="_blank" class="text-rose-500 underline">Prenota</a></p></div>
+                        <div class="relative z-10 pl-16 mb-10"><h4 class="text-2xl font-bold">17:00 - 18:30 | Cittadella</h4><p class="text-slate-500">Tramonto.</p></div>
+                        <div class="relative z-10 pl-16 mb-10"><h4 class="text-2xl font-bold">20:00 - 22:00 | Cena Menza</h4><p class="text-slate-500">Cucina tipica. <a href="https://www.menza.hu/en/" target="_blank" class="text-rose-500 underline">Sito</a></p></div>
+                        <div class="relative z-10 pl-16 mb-10"><h4 class="text-2xl font-bold">22:30 - Late | Instant-Fogas</h4><p class="text-slate-500">Club gigante.</p></div>
                     </div>
                     <div class="lg:col-span-4">
-                        <div class="rounded-3xl overflow-hidden shadow-lg h-[500px] bg-slate-200">
-                            <img src="bastioni.jpg" onerror="this.src='https://placehold.co/600x800?text=Carica+bastioni.jpg'" 
-                                 class="w-full h-full object-cover">
-                        </div>
+                        <div class="rounded-3xl overflow-hidden shadow-lg h-[500px] bg-slate-200"><img src="bastioni.jpg" class="w-full h-full object-cover"></div>
                     </div>
                 </div>
             </section>
@@ -209,28 +128,16 @@
                 <div class="bg-amber-50 p-8 rounded-[3rem] border border-amber-100 flex flex-col md:flex-row gap-8 items-center mb-12">
                     <div class="flex-1 space-y-6">
                         <h4 class="text-3xl font-serif text-amber-900 italic">Shopping & Saluti</h4>
-                        <div>
-                            <p class="text-xl font-bold">10:00 - 12:30 | Mercato Centrale</p>
-                            <p class="text-sm text-slate-500 mb-1">Paprika e Lángos.</p>
-                            <span class="text-[10px] font-bold uppercase text-slate-400">Tram 47 o 49 (10 min)</span>
-                        </div>
-                        <div>
-                            <p class="text-xl font-bold">13:30 - 15:30 | New York Café</p>
-                            <p class="text-sm text-slate-500 mb-1">Il caffè più bello del mondo.</p>
-                            <a href="https://newyorkcafe.hu/en/" target="_blank" class="text-xs font-bold text-rose-500 underline">Prenota Qui ↗</a>
-                        </div>
+                        <div><p class="text-xl font-bold">10:00 - 12:30 | Mercato Centrale</p><p class="text-sm text-slate-500">Paprika e Lángos.</p></div>
+                        <div><p class="text-xl font-bold">13:30 - 15:30 | New York Café</p><p class="text-sm text-slate-500">Caffè storico. <a href="https://newyorkcafe.hu/en/" target="_blank" class="text-rose-500 underline">Prenota</a></p></div>
                     </div>
                     <div class="w-full md:w-80 shrink-0">
-                        <div class="rounded-3xl overflow-hidden shadow-lg h-80 bg-slate-200">
-                            <img src="mercato.jpg" onerror="this.src='https://placehold.co/600x800?text=Carica+mercato.jpg'" 
-                                 class="w-full h-full object-cover">
-                        </div>
+                        <div class="rounded-3xl overflow-hidden shadow-lg h-80 bg-slate-200"><img src="mercato.jpg" class="w-full h-full object-cover"></div>
                     </div>
                 </div>
                 <div class="bg-slate-900 text-white p-12 rounded-[3.5rem] text-center border-b-[16px] border-rose-600 shadow-2xl">
                     <h2 class="text-4xl font-serif mb-4 italic">Fine del Viaggio</h2>
                     <p class="text-rose-300 text-2xl font-bold mb-6">Taxi Prenotato ore 16:30</p>
-                    <p class="text-slate-400 text-sm">Siate pronti fuori dall'alloggio alle 16:25.</p>
                 </div>
             </section>
         </div>
@@ -276,7 +183,7 @@
             }
         }
 
-        // MAPPA
+        // MAPPA CON POPUP COMPLETO (FOTO + ORARI + NAVIGAZIONE)
         async function initMap() {
             const { Map, InfoWindow } = await google.maps.importLibrary("maps");
             const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
@@ -289,15 +196,15 @@
                 gestureHandling: 'greedy'
             });
 
-            // QUESTI PIN USANO LE TUE FOTO CARICATE
+            // DATI PIN CON ORARI (Modifica qui se vuoi orari diversi)
             const points = [
-                { name: "Quiet Condo", lat: 47.4988, lng: 19.0655, img: "casa.jpg" },
-                { name: "Cat Museum", lat: 47.5050, lng: 19.0535, img: "gatti.jpg" },
-                { name: "Széchenyi Baths", lat: 47.5189, lng: 19.0824, img: "terme.jpg" },
-                { name: "Szimpla Kert", lat: 47.4967, lng: 19.0631, img: "ruin.jpg" }, // ORA USA ruin.jpg
-                { name: "Parlamento", lat: 47.5071, lng: 19.0456, img: "copertina.jpg" },
-                { name: "Buda Castle", lat: 47.5022, lng: 19.0348, img: "bastioni.jpg" },
-                { name: "Mercato Centrale", lat: 47.4870, lng: 19.0587, img: "mercato.jpg" }
+                { name: "Quiet Condo", lat: 47.4988, lng: 19.0655, img: "casa.jpg", time: "Check-in: 15:00" },
+                { name: "Cat Museum", lat: 47.5050, lng: 19.0535, img: "gatti.jpg", time: "10:00 - 18:00" },
+                { name: "Széchenyi Baths", lat: 47.5189, lng: 19.0824, img: "terme.jpg", time: "07:00 - 20:00" },
+                { name: "Szimpla Kert", lat: 47.4967, lng: 19.0631, img: "ruin.jpg", time: "12:00 - 04:00" },
+                { name: "Parlamento", lat: 47.5071, lng: 19.0456, img: "copertina.jpg", time: "08:00 - 16:00" },
+                { name: "Buda Castle", lat: 47.5022, lng: 19.0348, img: "bastioni.jpg", time: "Sempre aperto (Cortili)" },
+                { name: "Mercato Centrale", lat: 47.4870, lng: 19.0587, img: "mercato.jpg", time: "06:00 - 18:00" }
             ];
 
             const infoWindow = new InfoWindow();
@@ -323,12 +230,18 @@
                     content: pinContainer
                 });
 
-                // POPUP PULITO E FUNZIONALE
+                // POPUP COMPLETO
                 const contentString = `
-                    <div style="width: 220px; padding: 10px; font-family: sans-serif;">
-                        <h3 style="margin: 0 0 5px 0; font-size: 16px; font-weight: bold; color: #f43f5e;">${p.name}</h3>
+                    <div style="width: 240px; padding: 15px; font-family: 'Inter', sans-serif;">
+                        <div style="height:140px; border-radius:12px; overflow:hidden; margin-bottom:12px; box-shadow:0 2px 5px rgba(0,0,0,0.1);">
+                            <img src="${p.img}" style="width:100%; height:100%; object-fit:cover;">
+                        </div>
+                        <h3 style="margin:0 0 5px 0; font-size:18px; font-weight:700; color:#f43f5e;">${p.name}</h3>
+                        <p style="margin:0 0 12px 0; font-size:13px; color:#64748b; display:flex; align-items:center; gap:4px;">
+                            <span class="material-symbols-outlined" style="font-size:16px;">schedule</span> ${p.time}
+                        </p>
                         <a href="https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lng}" target="_blank" 
-                           style="display:block; text-align:center; background:#1e293b; color:white; padding:8px 12px; border-radius:8px; text-decoration:none; font-size:12px; font-weight:bold; margin-top:5px;">
+                           style="display:block; text-align:center; background:#1e293b; color:white; padding:10px; border-radius:10px; text-decoration:none; font-size:13px; font-weight:bold; transition:0.2s;">
                            NAVIGA QUI 📍
                         </a>
                     </div>
