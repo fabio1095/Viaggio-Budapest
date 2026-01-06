@@ -17,26 +17,36 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         
-        /* Forza le immagini ad essere visibili */
+        /* Forza visualizzazione immagini */
         img { display: block; width: 100%; height: 100%; object-fit: cover; }
         
-        /* Stile Pin Mappa */
-        .map-pin-img {
+        /* Stile Pin Mappa (Cerchio Bianco) */
+        .map-pin-container {
             width: 50px;
             height: 50px;
             border-radius: 50%;
             border: 3px solid white;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-            object-fit: cover;
-            animation: popIn 0.3s ease-out;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+            overflow: hidden;
+            background: white;
+            animation: bounceIn 0.5s ease-out;
         }
-        @keyframes popIn { from { transform: scale(0); } to { transform: scale(1); } }
+        .map-pin-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        @keyframes bounceIn {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
     </style>
 </head>
 <body class="text-slate-900 antialiased">
 
     <header class="relative h-[65vh] flex items-center justify-center text-white overflow-hidden bg-slate-900">
-        <img src="https://images.unsplash.com/photo-1512411005872-9c98687a7d4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80&v=FINAL_VERSION" 
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Budapest_Hungarian_Parliament_%2830836966843%29.jpg" 
              alt="Budapest Parliament Night" 
              class="absolute inset-0 w-full h-full object-cover brightness-[0.5]">
         
@@ -76,7 +86,7 @@
             
             <div class="md:col-span-2 bg-slate-900 text-white p-8 rounded-[2.5rem] shadow-2xl flex flex-col sm:flex-row items-center gap-8 border-l-8 border-rose-500 relative overflow-hidden">
                 <div class="shrink-0 w-full sm:w-40 h-40 rounded-3xl overflow-hidden border-2 border-slate-700 bg-slate-800">
-                    <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=500&auto=format&fit=crop&v=1" 
+                    <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
                          alt="Condo" 
                          class="w-full h-full object-cover">
                 </div>
@@ -107,11 +117,11 @@
                     
                     <div class="lg:col-span-4 space-y-6">
                         <div class="rounded-3xl overflow-hidden shadow-lg h-64 bg-slate-200">
-                            <img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?q=80&w=800&auto=format&fit=crop&v=2" 
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Cat_Caf%C3%A9_Budapest_05.jpg" 
                                  class="w-full h-full object-cover">
                         </div>
                         <div class="rounded-3xl overflow-hidden shadow-lg h-64 bg-slate-200">
-                            <img src="https://images.unsplash.com/photo-1573153537240-369f6a472629?q=80&w=800&auto=format&fit=crop&v=2" 
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Sz%C3%A9chenyi_Gy%C3%B3gyf%C3%BCrd%C5%91_2014.JPG" 
                                  class="w-full h-full object-cover">
                         </div>
                     </div>
@@ -128,7 +138,7 @@
                     </div>
                     <div class="lg:col-span-4">
                         <div class="rounded-3xl overflow-hidden shadow-lg h-[500px] bg-slate-200">
-                            <img src="https://images.unsplash.com/photo-1565426873118-a1bd461d50b4?q=80&w=800&auto=format&fit=crop&v=2" 
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d2/Hal%C3%A1szb%C3%A1stya_2013.JPG" 
                                  class="w-full h-full object-cover">
                         </div>
                     </div>
@@ -144,7 +154,7 @@
                     </div>
                     <div class="w-full md:w-80 shrink-0">
                         <div class="rounded-3xl overflow-hidden shadow-lg h-80 bg-slate-200">
-                            <img src="https://images.unsplash.com/photo-1596436666870-8777176274e0?q=80&w=800&auto=format&fit=crop&v=2" 
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Budapest_Central_Market_Hall_Interior.jpg" 
                                  class="w-full h-full object-cover">
                         </div>
                     </div>
@@ -202,7 +212,6 @@
             const { Map, InfoWindow } = await google.maps.importLibrary("maps");
             const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
             
-            // DEMO_MAP_ID è fondamentale per abilitare i pin tondi personalizzati
             const map = new Map(document.getElementById("map"), {
                 center: { lat: 47.502, lng: 19.055 },
                 zoom: 13,
@@ -211,36 +220,43 @@
                 gestureHandling: 'greedy'
             });
 
-            // DATI PIN (Link aggiornati)
+            // LINK IMMAGINI MAPPA (Uso gli stessi di Wikipedia)
             const points = [
-                { name: "Quiet Condo", lat: 47.4988, lng: 19.0655, img: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=150" },
-                { name: "Cat Museum", lat: 47.5050, lng: 19.0535, img: "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?q=80&w=150" },
-                { name: "Széchenyi Baths", lat: 47.5189, lng: 19.0824, img: "https://images.unsplash.com/photo-1559497673-c40d6c449c25?q=80&w=150" },
-                { name: "Szimpla Kert", lat: 47.4967, lng: 19.0631, img: "https://images.unsplash.com/photo-1516223725307-6f76b9ec8742?q=80&w=150" },
-                { name: "Parlamento", lat: 47.5071, lng: 19.0456, img: "https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?q=80&w=150" },
-                { name: "Buda Castle", lat: 47.5022, lng: 19.0348, img: "https://images.unsplash.com/photo-1565426873118-a1bd461d50b4?q=80&w=150" },
-                { name: "Mercato Centrale", lat: 47.4870, lng: 19.0587, img: "https://images.unsplash.com/photo-1596436666870-8777176274e0?q=80&w=150" }
+                { name: "Quiet Condo", lat: 47.4988, lng: 19.0655, img: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=150" },
+                { name: "Cat Museum", lat: 47.5050, lng: 19.0535, img: "https://upload.wikimedia.org/wikipedia/commons/9/90/Cat_Caf%C3%A9_Budapest_05.jpg" },
+                { name: "Széchenyi Baths", lat: 47.5189, lng: 19.0824, img: "https://upload.wikimedia.org/wikipedia/commons/e/e6/Sz%C3%A9chenyi_Gy%C3%B3gyf%C3%BCrd%C5%91_2014.JPG" },
+                { name: "Szimpla Kert", lat: 47.4967, lng: 19.0631, img: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Szimpla_Kert_Budapest.jpg/640px-Szimpla_Kert_Budapest.jpg" },
+                { name: "Parlamento", lat: 47.5071, lng: 19.0456, img: "https://upload.wikimedia.org/wikipedia/commons/6/60/Budapest_Hungarian_Parliament_%2830836966843%29.jpg" },
+                { name: "Buda Castle", lat: 47.5022, lng: 19.0348, img: "https://upload.wikimedia.org/wikipedia/commons/d/d2/Hal%C3%A1szb%C3%A1stya_2013.JPG" },
+                { name: "Mercato Centrale", lat: 47.4870, lng: 19.0587, img: "https://upload.wikimedia.org/wikipedia/commons/a/a2/Budapest_Central_Market_Hall_Interior.jpg" }
             ];
 
             const infoWindow = new InfoWindow();
 
             points.forEach(p => {
-                // CREAZIONE PIN TONDO TRAMITE HTML
-                const pinImg = document.createElement("img");
-                pinImg.src = p.img;
-                pinImg.className = "map-pin-img"; // Classe definita nel CSS in alto
+                // Creazione elemento HTML per il pin
+                const container = document.createElement("div");
+                container.className = "map-pin-container";
+                
+                const img = document.createElement("img");
+                img.src = p.img;
+                img.className = "map-pin-img";
+                
+                container.appendChild(img);
 
                 const marker = new AdvancedMarkerElement({
                     map,
                     position: { lat: p.lat, lng: p.lng },
                     title: p.name,
-                    content: pinImg // Inserisce l'immagine tonda al posto del pin rosso
+                    content: container
                 });
 
-                // POPUP AL CLICK
+                // Contenuto Popup
                 const contentString = `
                     <div style="width: 200px; padding: 10px;">
-                        <img src="${p.img}" style="width: 100%; height: 120px; object-fit: cover; border-radius: 8px; margin-bottom: 8px;">
+                        <div style="height:120px; overflow:hidden; border-radius:8px; margin-bottom:8px;">
+                            <img src="${p.img}" style="width:100%; height:100%; object-fit:cover;">
+                        </div>
                         <h3 style="margin: 0; font-size: 16px; font-weight: bold; color: #f43f5e;">${p.name}</h3>
                     </div>
                 `;
