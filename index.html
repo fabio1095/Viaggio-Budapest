@@ -17,34 +17,21 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         
-        /* FORZA VISUALIZZAZIONE IMMAGINI */
-        img { display: block; width: 100%; object-fit: cover; }
+        /* CSS per rendere le immagini visibili sempre */
+        img { display: block; width: 100%; height: 100%; object-fit: cover; }
         
-        /* STILE POPUP MAPPA (Bello e Cliccabile) */
-        .gm-style-iw { padding: 0 !important; border-radius: 16px !important; overflow: hidden !important; box-shadow: 0 10px 25px rgba(0,0,0,0.2) !important; }
+        /* Stile Popup Mappa */
+        .gm-style-iw { padding: 0 !important; border-radius: 12px !important; overflow: hidden !important; }
         .gm-style-iw-d { overflow: hidden !important; max-height: none !important; }
-        .gm-ui-hover-effect { top: 5px !important; right: 5px !important; background: white !important; border-radius: 50% !important; opacity: 0.9 !important; }
-        
-        /* STILE PIN MAPPA (Cerchio con foto) */
-        .custom-map-pin {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: 3px solid #ffffff;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-            object-fit: cover;
-            background-color: white;
-            transition: transform 0.2s;
-        }
-        .custom-map-pin:hover { transform: scale(1.2); z-index: 999; }
+        .gm-ui-hover-effect { background: white !important; border-radius: 50% !important; margin: 5px !important; }
     </style>
 </head>
 <body class="text-slate-900 antialiased">
 
     <header class="relative h-[65vh] flex items-center justify-center text-white overflow-hidden bg-slate-900">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Budapest_Hungarian_Parliament_%2830836966843%29.jpg/1280px-Budapest_Hungarian_Parliament_%2830836966843%29.jpg" 
-             alt="Budapest Parliament" 
-             class="absolute inset-0 w-full h-full object-cover brightness-[0.5]">
+        <img src="copertina.jpg" onerror="this.src='https://placehold.co/1920x1080?text=Carica+copertina.jpg'" 
+             alt="Budapest Night" 
+             class="absolute inset-0 w-full h-full object-cover brightness-[0.6]">
         
         <div class="relative z-10 text-center px-6">
             <h1 class="text-5xl md:text-8xl font-serif mb-4 drop-shadow-2xl">Budapest d'Inverno</h1>
@@ -82,7 +69,7 @@
             
             <div class="md:col-span-2 bg-slate-900 text-white p-8 rounded-[2.5rem] shadow-2xl flex flex-col sm:flex-row items-center gap-8 border-l-8 border-rose-500 relative overflow-hidden">
                 <div class="shrink-0 w-full sm:w-40 h-40 rounded-3xl overflow-hidden border-2 border-slate-700 bg-slate-800">
-                    <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                    <img src="casa.jpg" onerror="this.src='https://placehold.co/400x400?text=Carica+casa.jpg'" 
                          alt="Condo" 
                          class="w-full h-full object-cover">
                 </div>
@@ -113,11 +100,11 @@
                     
                     <div class="lg:col-span-4 space-y-6">
                         <div class="rounded-3xl overflow-hidden shadow-lg h-64 bg-slate-200">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Cat_Caf%C3%A9_Budapest_01.jpg/800px-Cat_Caf%C3%A9_Budapest_01.jpg" 
+                            <img src="gatti.jpg" onerror="this.src='https://placehold.co/600x400?text=Carica+gatti.jpg'" 
                                  class="w-full h-full object-cover">
                         </div>
                         <div class="rounded-3xl overflow-hidden shadow-lg h-64 bg-slate-200">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Sz%C3%A9chenyi_Gy%C3%B3gyf%C3%BCrd%C5%91_2014.JPG/800px-Sz%C3%A9chenyi_Gy%C3%B3gyf%C3%BCrd%C5%91_2014.JPG" 
+                            <img src="terme.jpg" onerror="this.src='https://placehold.co/600x400?text=Carica+terme.jpg'" 
                                  class="w-full h-full object-cover">
                         </div>
                     </div>
@@ -134,7 +121,7 @@
                     </div>
                     <div class="lg:col-span-4">
                         <div class="rounded-3xl overflow-hidden shadow-lg h-[500px] bg-slate-200">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Hal%C3%A1szb%C3%A1stya_2013.JPG/800px-Hal%C3%A1szb%C3%A1stya_2013.JPG" 
+                            <img src="bastioni.jpg" onerror="this.src='https://placehold.co/600x800?text=Carica+bastioni.jpg'" 
                                  class="w-full h-full object-cover">
                         </div>
                     </div>
@@ -150,7 +137,7 @@
                     </div>
                     <div class="w-full md:w-80 shrink-0">
                         <div class="rounded-3xl overflow-hidden shadow-lg h-80 bg-slate-200">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Budapest_Central_Market_Hall_Interior.jpg/800px-Budapest_Central_Market_Hall_Interior.jpg" 
+                            <img src="mercato.jpg" onerror="this.src='https://placehold.co/600x800?text=Carica+mercato.jpg'" 
                                  class="w-full h-full object-cover">
                         </div>
                     </div>
@@ -184,6 +171,7 @@
     </script>
 
     <script>
+        // TABS
         function switchDay(day) {
             document.getElementById('day-1').classList.add('hidden');
             document.getElementById('day-2').classList.add('hidden');
@@ -202,6 +190,7 @@
             }
         }
 
+        // MAPPA
         async function initMap() {
             const { Map, InfoWindow } = await google.maps.importLibrary("maps");
             const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
@@ -214,26 +203,32 @@
                 gestureHandling: 'greedy'
             });
 
-            // DATI PIN (Link WIKIPEDIA Statici - NO UNSPLASH)
+            // QUESTI PIN USANO LE TUE FOTO CARICATE (es. "copertina.jpg")
             const points = [
-                { name: "Quiet Condo", lat: 47.4988, lng: 19.0655, img: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Cat_Caf%C3%A9_Budapest_01.jpg/200px-Cat_Caf%C3%A9_Budapest_01.jpg" }, // Uso una foto generica interni
-                { name: "Cat Museum", lat: 47.5050, lng: 19.0535, img: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Cat_Caf%C3%A9_Budapest_01.jpg/200px-Cat_Caf%C3%A9_Budapest_01.jpg" },
-                { name: "Széchenyi Baths", lat: 47.5189, lng: 19.0824, img: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Sz%C3%A9chenyi_Gy%C3%B3gyf%C3%BCrd%C5%91_2014.JPG/200px-Sz%C3%A9chenyi_Gy%C3%B3gyf%C3%BCrd%C5%91_2014.JPG" },
-                { name: "Szimpla Kert", lat: 47.4967, lng: 19.0631, img: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Szimpla_Kert_Budapest.jpg/200px-Szimpla_Kert_Budapest.jpg" },
-                { name: "Parlamento", lat: 47.5071, lng: 19.0456, img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Budapest_Hungarian_Parliament_%2830836966843%29.jpg/200px-Budapest_Hungarian_Parliament_%2830836966843%29.jpg" },
-                { name: "Buda Castle", lat: 47.5022, lng: 19.0348, img: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Hal%C3%A1szb%C3%A1stya_2013.JPG/200px-Hal%C3%A1szb%C3%A1stya_2013.JPG" },
-                { name: "Mercato Centrale", lat: 47.4870, lng: 19.0587, img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Budapest_Central_Market_Hall_Interior.jpg/200px-Budapest_Central_Market_Hall_Interior.jpg" }
+                { name: "Quiet Condo", lat: 47.4988, lng: 19.0655, img: "casa.jpg" },
+                { name: "Cat Museum", lat: 47.5050, lng: 19.0535, img: "gatti.jpg" },
+                { name: "Széchenyi Baths", lat: 47.5189, lng: 19.0824, img: "terme.jpg" },
+                { name: "Parlamento", lat: 47.5071, lng: 19.0456, img: "copertina.jpg" },
+                { name: "Buda Castle", lat: 47.5022, lng: 19.0348, img: "bastioni.jpg" },
+                { name: "Mercato Centrale", lat: 47.4870, lng: 19.0587, img: "mercato.jpg" }
             ];
 
             const infoWindow = new InfoWindow();
 
             points.forEach(p => {
-                // PIN TONDO (HTML Custom)
+                // PIN TONDO
                 const pinContainer = document.createElement("div");
-                pinContainer.className = "custom-map-pin"; // Usa classe CSS
+                pinContainer.style.width = "50px";
+                pinContainer.style.height = "50px";
+                pinContainer.style.borderRadius = "50%";
+                pinContainer.style.border = "3px solid white";
+                pinContainer.style.boxShadow = "0 4px 6px rgba(0,0,0,0.3)";
+                pinContainer.style.overflow = "hidden";
                 pinContainer.style.backgroundImage = `url('${p.img}')`;
                 pinContainer.style.backgroundSize = "cover";
                 pinContainer.style.backgroundPosition = "center";
+                // Fallback se l'immagine manca: grigio
+                pinContainer.style.backgroundColor = "#cbd5e1"; 
 
                 const marker = new AdvancedMarkerElement({
                     map,
@@ -242,15 +237,12 @@
                     content: pinContainer
                 });
 
-                // POPUP BELLO E CLICCABILE
+                // POPUP PULITO E FUNZIONALE
                 const contentString = `
-                    <div style="width: 240px; padding: 10px; font-family: 'Inter', sans-serif;">
-                        <div style="height:140px; border-radius:12px; overflow:hidden; margin-bottom:10px;">
-                            <img src="${p.img.replace('200px', '800px')}" style="width:100%; height:100%; object-fit:cover;">
-                        </div>
-                        <h3 style="margin:0 0 5px 0; font-size:18px; font-weight:700; color:#f43f5e;">${p.name}</h3>
+                    <div style="width: 220px; padding: 10px; font-family: sans-serif;">
+                        <h3 style="margin: 0 0 5px 0; font-size: 16px; font-weight: bold; color: #f43f5e;">${p.name}</h3>
                         <a href="https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lng}" target="_blank" 
-                           style="display:block; text-align:center; background:#1e293b; color:white; padding:8px; border-radius:8px; text-decoration:none; font-size:12px; font-weight:bold; margin-top:5px;">
+                           style="display:block; text-align:center; background:#1e293b; color:white; padding:8px 12px; border-radius:8px; text-decoration:none; font-size:12px; font-weight:bold; margin-top:5px;">
                            NAVIGA QUI 📍
                         </a>
                     </div>
