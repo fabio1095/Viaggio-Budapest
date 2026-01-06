@@ -12,20 +12,24 @@
         body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
         .font-serif { font-family: 'Playfair Display', serif; }
         .tab-active { border-bottom: 4px solid #f43f5e; color: #f43f5e; font-weight: 700; }
-        #map { height: 450px; width: 100%; border-radius: 1.5rem; }
+        #map { height: 500px; width: 100%; border-radius: 1.5rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
         .timeline-line::before { content: ''; position: absolute; left: 19px; top: 0; bottom: 0; width: 2px; background: #e2e8f0; z-index: 0; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        /* Forza visualizzazione immagini */
         img { display: block; width: 100%; height: auto; object-fit: cover; }
+        
+        /* Stile personalizzato per le InfoWindow di Maps */
+        .gm-style-iw { padding: 0 !important; border-radius: 12px !important; overflow: hidden !important; }
+        .gm-style-iw-d { overflow: hidden !important; }
+        button.gm-ui-hover-effect { background: white !important; border-radius: 50% !important; margin: 5px !important; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
     </style>
 </head>
 <body class="text-slate-900 antialiased">
 
     <header class="relative h-[65vh] flex items-center justify-center text-white overflow-hidden bg-slate-900">
-        <img src="https://images.unsplash.com/photo-1516223725307-6f76b9ec8742?q=80&w=1920&auto=format&fit=crop" 
+        <img src="https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?q=80&w=1920&auto=format&fit=crop" 
              alt="Budapest Night" 
-             class="absolute inset-0 w-full h-full object-cover brightness-50">
+             class="absolute inset-0 w-full h-full object-cover brightness-[0.6]">
         
         <div class="relative z-10 text-center px-6">
             <h1 class="text-5xl md:text-8xl font-serif mb-4 drop-shadow-2xl">Budapest d'Inverno</h1>
@@ -70,7 +74,7 @@
             
             <div class="md:col-span-2 bg-slate-900 text-white p-8 rounded-[2.5rem] shadow-2xl flex flex-col sm:flex-row items-center gap-8 border-l-8 border-rose-500 relative overflow-hidden">
                 <div class="shrink-0 w-full sm:w-40 h-40 rounded-3xl overflow-hidden border-2 border-slate-700 bg-slate-800">
-                    <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=500&auto=format&fit=crop" 
+                    <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=500&auto=format&fit=crop" 
                          alt="Condo" 
                          class="w-full h-full object-cover">
                 </div>
@@ -100,13 +104,13 @@
                     </div>
                     
                     <div class="lg:col-span-4 space-y-6">
-                        <div class="rounded-3xl overflow-hidden shadow-lg h-64 bg-slate-200">
-                            <img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?q=80&w=800&auto=format&fit=crop" 
-                                 class="w-full h-full object-cover">
+                        <div class="rounded-3xl overflow-hidden shadow-lg h-64 bg-slate-200 relative group">
+                            <span class="absolute top-4 left-4 bg-white px-3 py-1 rounded-full text-xs font-bold shadow">Cat Museum</span>
+                            <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover">
                         </div>
-                        <div class="rounded-3xl overflow-hidden shadow-lg h-64 bg-slate-200">
-                            <img src="https://images.unsplash.com/photo-1559497673-c40d6c449c25?q=80&w=800&auto=format&fit=crop" 
-                                 class="w-full h-full object-cover">
+                        <div class="rounded-3xl overflow-hidden shadow-lg h-64 bg-slate-200 relative group">
+                            <span class="absolute top-4 left-4 bg-white px-3 py-1 rounded-full text-xs font-bold shadow">Terme Széchenyi</span>
+                            <img src="https://images.unsplash.com/photo-1559497673-c40d6c449c25?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover">
                         </div>
                     </div>
                 </div>
@@ -121,9 +125,9 @@
                         <div class="relative z-10 pl-16 mb-10"><h4 class="text-2xl font-bold">20:00 Cena Menza</h4><p class="text-slate-500">Cucina tipica.</p></div>
                     </div>
                     <div class="lg:col-span-4">
-                        <div class="rounded-3xl overflow-hidden shadow-lg h-[500px] bg-slate-200">
-                            <img src="https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?q=80&w=800&auto=format&fit=crop" 
-                                 class="w-full h-full object-cover">
+                        <div class="rounded-3xl overflow-hidden shadow-lg h-[500px] bg-slate-200 relative group">
+                            <span class="absolute top-4 left-4 bg-white px-3 py-1 rounded-full text-xs font-bold shadow">Bastione dei Pescatori</span>
+                            <img src="https://images.unsplash.com/photo-1565426873118-a1bd461d50b4?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover">
                         </div>
                     </div>
                 </div>
@@ -137,9 +141,9 @@
                         <div><p class="text-xl font-bold">New York Café</p><p class="text-sm text-slate-500">Il caffè più bello del mondo.</p></div>
                     </div>
                     <div class="w-full md:w-80 shrink-0">
-                        <div class="rounded-3xl overflow-hidden shadow-lg h-80 bg-slate-200">
-                            <img src="https://images.unsplash.com/photo-1596436666870-8777176274e0?q=80&w=800&auto=format&fit=crop" 
-                                 class="w-full h-full object-cover">
+                        <div class="rounded-3xl overflow-hidden shadow-lg h-80 bg-slate-200 relative group">
+                            <span class="absolute top-4 left-4 bg-white px-3 py-1 rounded-full text-xs font-bold shadow">Mercato Centrale</span>
+                            <img src="https://images.unsplash.com/photo-1596436666870-8777176274e0?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover">
                         </div>
                     </div>
                 </div>
@@ -191,9 +195,10 @@
             }
         }
 
-        // MAPPA
+        // MAPPA CON IMMAGINI
         async function initMap() {
             const { Map, InfoWindow } = await google.maps.importLibrary("maps");
+            
             const map = new Map(document.getElementById("map"), {
                 center: { lat: 47.502, lng: 19.055 },
                 zoom: 13,
@@ -201,30 +206,52 @@
                 gestureHandling: 'greedy'
             });
 
+            // DATI PIN (COORDINATE E IMMAGINI)
             const points = [
-                { name: "Quiet Condo (Casa)", pos: { lat: 47.4988, lng: 19.0655 } },
-                { name: "Cat Museum", pos: { lat: 47.5050, lng: 19.0535 } },
-                { name: "Széchenyi Baths", pos: { lat: 47.5189, lng: 19.0824 } },
-                { name: "Szimpla Kert", pos: { lat: 47.4967, lng: 19.0631 } },
-                { name: "Parlamento", pos: { lat: 47.5071, lng: 19.0456 } },
-                { name: "Buda Castle", pos: { lat: 47.5022, lng: 19.0348 } },
-                { name: "Instant-Fogas", pos: { lat: 47.5007, lng: 19.0645 } }
+                { name: "Quiet Condo", lat: 47.4988, lng: 19.0655, img: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=200" },
+                { name: "Cat Museum", lat: 47.5050, lng: 19.0535, img: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=200" },
+                { name: "Széchenyi Baths", lat: 47.5189, lng: 19.0824, img: "https://images.unsplash.com/photo-1559497673-c40d6c449c25?q=80&w=200" },
+                { name: "Szimpla Kert", lat: 47.4967, lng: 19.0631, img: "https://images.unsplash.com/photo-1516223725307-6f76b9ec8742?q=80&w=200" },
+                { name: "Parlamento", lat: 47.5071, lng: 19.0456, img: "https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?q=80&w=200" },
+                { name: "Buda Castle", lat: 47.5022, lng: 19.0348, img: "https://images.unsplash.com/photo-1565426873118-a1bd461d50b4?q=80&w=200" },
+                { name: "Mercato Centrale", lat: 47.4870, lng: 19.0587, img: "https://images.unsplash.com/photo-1596436666870-8777176274e0?q=80&w=200" }
             ];
 
             const infoWindow = new InfoWindow();
+
             points.forEach(p => {
+                // PIN PERSONALIZZATO (ICONA CIRCOLARE CON FOTO)
+                const icon = {
+                    url: p.img, // Usa la foto del luogo
+                    scaledSize: new google.maps.Size(60, 60), // Dimensione Icona
+                    origin: new google.maps.Point(0, 0),
+                    anchor: new google.maps.Point(30, 30) // Centro
+                };
+
                 const marker = new google.maps.Marker({
-                    position: p.pos,
+                    position: { lat: p.lat, lng: p.lng },
                     map: map,
                     title: p.name,
+                    icon: icon, // Applica l'icona foto
                     animation: google.maps.Animation.DROP
                 });
+
+                // CONTENUTO POPUP (RICCO)
+                const contentString = `
+                    <div style="width: 220px; padding: 5px;">
+                        <img src="${p.img}" style="width: 100%; height: 120px; object-fit: cover; border-radius: 12px; margin-bottom: 10px;">
+                        <h3 style="margin: 0; font-size: 18px; font-weight: bold; color: #f43f5e; font-family: serif;">${p.name}</h3>
+                        <p style="margin: 5px 0 0; font-size: 12px; color: #64748b;">Clicca per avviare la navigazione</p>
+                    </div>
+                `;
+
                 marker.addListener("click", () => {
-                    infoWindow.setContent(`<div style="padding:10px; font-weight:bold; color:#f43f5e">${p.name}</div>`);
+                    infoWindow.setContent(contentString);
                     infoWindow.open(map, marker);
                 });
             });
         }
+
         document.addEventListener("DOMContentLoaded", initMap);
     </script>
 </body>
